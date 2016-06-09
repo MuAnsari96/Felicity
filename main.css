@@ -28,6 +28,7 @@ div#centered {
 	text-align: center;
 }
 
+/* Timer related CSS inspired by tutorial on thecodeplayer.com */
 .timer {
 	padding: 10px;
 	background: linear-gradient(top, #222, #444);
@@ -39,8 +40,6 @@ div#centered {
 }
 
 .cell {
-	/*Should only display 1 digit. Hence height = line height of .numbers
-	and width = width of .numbers*/
 	width: 0.60em;
 	height: 40px;
 	font-size: 50px;
@@ -60,11 +59,9 @@ div#centered {
 	top: 0;
 	left: 0;
 	
-	/*Glow to the text*/
 	text-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
 
-/*Styles for the controls*/
 #timer_controls {
 	margin-top: -5px;
 }
@@ -84,11 +81,7 @@ input[name="controls"] {display: none;}
 #reset:checked~.timer .numbers {animation: none;}
 
 .moveten {
-	/*The digits move but dont look good. We will use steps now
-	10 digits = 10 steps. You can now see the digits swapping instead of 
-	moving pixel-by-pixel*/
 	animation: moveten 1s steps(10, end) infinite;
-	/*By default animation should be paused*/
 	animation-play-state: paused;
 }
 .movesix {
@@ -96,8 +89,6 @@ input[name="controls"] {display: none;}
 	animation-play-state: paused;
 }
 
-/*Now we need to sync the animation speed with time speed*/
-/*One second per digit. 10 digits. Hence 10s*/
 .second {animation-duration: 10s;}
 .tensecond {animation-duration: 60s;} /*60 times .second*/
 
@@ -111,15 +102,6 @@ input[name="controls"] {display: none;}
 .hour {animation-duration: 36000s;} /*60 times .minute*/
 .tenhour {animation-duration: 360000s;} /*10 times .hour*/
 
-/*The stopwatch looks good now. Lets add some styles*/
-
-/*Lets animate the digit now - the main part of this tutorial*/
-/*We are using prefixfree, so no need of vendor prefixes*/
-/*The logic of the animation is to alter the 'top' value of the absolutely
-positioned .numbers*/
-/*Minutes and Seconds should be limited to only '60' and not '100'
-Hence we need to create 2 animations. One with 10 steps and 10 digits and
-the other one with 6 steps and 6 digits*/
 @keyframes moveten {
 	0% {top: 0;}
 	100% {top: -400px;} 
@@ -149,9 +131,6 @@ video#bgvid {
     background-size: cover; 
 }
 
-
-
-/*Lets use a better font for the numbers*/
 @font-face {
 	font-family: 'digital';
 	src: url('http://thecodeplayer.com/uploads/fonts/DS-DIGI.TTF');
